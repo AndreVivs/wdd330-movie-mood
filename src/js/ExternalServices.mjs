@@ -110,4 +110,13 @@ export class TMBDService {
       providers: providers.results?.US?.flatrate || [],
     };
   }
+
+  static async getWatchProviders(movieId) {
+    const res = await fetch(
+      `https://api.themoviedb.org/3/movie/${movieId}/watch/providers?api_key=${tmdbKey}`,
+    ).then((r) => r.json());
+    // if (!res.ok) throw new Error('Failed to get watch providers');
+    // const data = await res.json();
+    return res.results;
+  }
 }

@@ -1,4 +1,5 @@
 import { TMBDService } from './ExternalServices.mjs';
+import { renderMovieCards } from './MovieCard.mjs';
 
 export default class EmotionMovieList {
   constructor(containerId) {
@@ -41,35 +42,18 @@ export default class EmotionMovieList {
       try {
         const movies = await TMBDService.getMoviesByGenre(genreId);
         const filtered = movies.filter((m) => m.vote_average >= 7).slice(0, 20);
-        this.renderMovies(filtered);
+
+        this.appContainer.innerHTML = ''; // limpia antes de mostrar
+        renderMovieCards(
+          this.appContainer,
+          filtered,
+          'Movies for this genre',
+          false,
+        );
       } catch (error) {
         console.error('Error fetching movies by genre:', error);
         this.appContainer.innerHTML = `<p class="error">Failed to load movies for that genre.</p>`;
       }
     });
-  }
-
-  renderMovies(movies) {
-    this.appContainer.innerHTML = `
-      <h2 class="section-title">Movies for this genre</h2>
-      <div class="movie-grid">
-        ${movies.map(this.movieCardTemplate).join('')}
-      </div>
-    `;
-  }
-
-  movieCardTemplate(movie) {
-    const poster = movie.poster_path
-      ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-      : 'https://via.placeholder.com/300x450?text=No+Image';
-
-    return `
-      <div class="movie-card">
-        <img src="${poster}" alt="${movie.title}" />
-        <h3>${movie.title}</h3>
-        <p>⭐ ${movie.vote_average}</p>
-        <p>${movie.release_date}</p>
-      </div>
-    `;
   }
 }

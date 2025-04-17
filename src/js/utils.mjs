@@ -17,3 +17,12 @@ export async function loadHeader() {
 
   renderWithTemplate(headerTemplate, headerElement);
 }
+
+// localStorageUtils.mjs
+export function getLocalStorage(key) {
+  return JSON.parse(localStorage.getItem(key)) || [];
+}
+
+export function postLocalStorage(key, data) {
+  localStorage.setItem(key, JSON.stringify(data));
+}
