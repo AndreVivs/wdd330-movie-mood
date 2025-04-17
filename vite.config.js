@@ -11,7 +11,6 @@ export default defineConfig({
         main: resolve(__dirname, 'src/index.html'),
         favorites: resolve(__dirname, 'src/favorites/index.html'),
         records: resolve(__dirname, 'src/records/index.html'),
-        movie_detail: resolve(__dirname, 'src/movie_detail/index.html'),
       },
     },
   },
