@@ -4,31 +4,26 @@ import MovieServiceHome from './ExternalServices.mjs';
 export default class MovieList {
   constructor(containerId) {
     this.container = document.getElementById(containerId);
-    this.movies = [];
-    this.generos = [];
+    //this.movies = [];
   }
 
   async init() {
     try {
-      this.movies = await MovieServiceHome.getPopularMovies();
-      this.generos = await MovieServiceHome.getMovieGenderes();
-      console.log('Generos', this.generos);
-
-      this.renderMovies();
+      const movies = await MovieServiceHome.getPopularMovies();
+      const filtered = movies.filter((m) => m.vote_average >= 6).slice(0, 20);
+      this.renderMovies(filtered);
     } catch (err) {
       console.error('Error loading movies:', err);
       this.container.innerHTML = `<p class="error">Failed to load movies. Try again later.</p>`;
     }
   }
 
-  renderMovies() {
-    if (!this.movies.length) return;
-
-    console.log('MOOOOOOOOVIES', this.movies);
+  renderMovies(movies) {
+    // if (!this.movies.length) return;
     this.container.innerHTML = `
       <h2 class="section-title">Popular Movies</h2>
       <div class="movie-grid">
-        ${this.movies.map(this.movieCardTemplate).join('')}
+        ${movies.map(this.movieCardTemplate).join('')}
       </div>
     `;
   }

@@ -11,7 +11,7 @@ export default class EmotionMovieList {
     try {
       const response = await TMBDService.getMovieGenderes();
       this.genres = response.genres;
-      console.log('Géneros disponibles:', this.genres);
+      // console.log('Géneros disponibles:', this.genres);
       this.renderSelector();
       this.addEventListener();
     } catch (err) {
@@ -22,9 +22,9 @@ export default class EmotionMovieList {
 
   renderSelector() {
     this.container.innerHTML = `
-      <label for="genre">Choose a mood in genre:</label>
+      <label for="genre">Select a movie genre:</label>
       <select id="genre">
-        <option value="">Moods</option>
+        <option value="">Choose a genre</option>
         ${this.genres
           .map((genre) => `<option value="${genre.id}">${genre.name}</option>`)
           .join('')}
@@ -40,7 +40,7 @@ export default class EmotionMovieList {
 
       try {
         const movies = await TMBDService.getMoviesByGenre(genreId);
-        const filtered = movies.filter((m) => m.vote_average >= 6).slice(0, 20);
+        const filtered = movies.filter((m) => m.vote_average >= 7).slice(0, 20);
         this.renderMovies(filtered);
       } catch (error) {
         console.error('Error fetching movies by genre:', error);
@@ -49,10 +49,9 @@ export default class EmotionMovieList {
     });
   }
 
-  //mood was changed for genres to display mor emovies and see the application.
   renderMovies(movies) {
     this.appContainer.innerHTML = `
-      <h2 class="section-title">Movies for your mood</h2>
+      <h2 class="section-title">Movies for this genre</h2>
       <div class="movie-grid">
         ${movies.map(this.movieCardTemplate).join('')}
       </div>

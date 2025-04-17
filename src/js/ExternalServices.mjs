@@ -1,6 +1,5 @@
-//ExternalServices.mjs
-const hfToken = import.meta.env.HUGFACE_KEY;
-const tmdbKey = import.meta.env.TMBD_KEY;
+const hfToken = import.meta.env.VITE_HUGFACE_KEY;
+const tmdbKey = import.meta.env.VITE_TMDB_KEY;
 
 async function convertToJson(res) {
   const jsonResponse = await res.json();

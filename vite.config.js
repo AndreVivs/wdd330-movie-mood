@@ -1,6 +1,5 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
-import { getFavorites } from './src/js/storage';
 
 export default defineConfig({
   root: 'src/',

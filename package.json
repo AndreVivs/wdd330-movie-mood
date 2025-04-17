@@ -4,12 +4,13 @@
   "description": "MovieMood is an application that solves the problem of finding relevant and personalized audiovisual content on streaming platforms or open catalogs according to your emotional mood.",
   "main": "main.js",
   "scripts": {
+    "dev": "vite",
     "start": "vite",
-    "build": "vite build --emptyOutDir",
-    "lint": "eslint *.js src/**/*.js",
-    "format": "prettier --ignore-path ./.gitignore --write \"./**/*.{html,json,js,ts,css}\"",
-    "test": "jest",
-    "preview": "vite preview"
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "test": "jest"
   },
   "author": "Andrea Vivas",
   "license": "ISC",
@@ -19,7 +20,7 @@
     "eslint-plugin-import": "^2.29.1",
     "jest": "^29.7.0",
     "prettier": "^3.2.5",
-    "vite": "^5.4.7"
+    "vite": "^5.4.18"
   },
   "babel": {
     "presets": [
