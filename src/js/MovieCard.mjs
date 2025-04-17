@@ -2,7 +2,7 @@
 import { getLocalStorage, postLocalStorage } from './utils.mjs';
 import { addToWatchedStorage } from './storage.js';
 
-export function movieCardTemplate(movie, isFavorites = false) {
+export function movieCardTemplate(movie) {
   const poster = movie.poster_path
     ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
     : `https://via.placeholder.com/300x450?text=No+Image`;

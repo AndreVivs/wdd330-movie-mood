@@ -1,5 +1,4 @@
-import { loadHeader } from './utils.mjs';
-import { getLocalStorage, postLocalStorage } from './utils.mjs';
+import { loadHeader, getLocalStorage, postLocalStorage } from './utils.mjs';
 import { renderMovieCards } from './MovieCard.mjs';
 
 document.addEventListener('DOMContentLoaded', () => {

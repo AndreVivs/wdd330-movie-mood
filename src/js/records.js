@@ -1,6 +1,6 @@
 import { loadHeader } from './utils.mjs';
 import { renderMovieCards } from './MovieCard.mjs';
-import { getWatchedMovies, deleteWatchedMovie } from './storage.js';
+import { getWatchedMovies } from './storage.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   loadHeader();
