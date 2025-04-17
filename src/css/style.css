@@ -28,28 +28,39 @@ body {
   color: var(--dark-grey);
 }
 
-header {
+header.header {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
   background-color: var(--primary-color);
   padding: 1rem;
+  gap: 1rem;
+}
+
+.header-top {
+  display: flex;
+  background-color: #5c7997;
+  padding: 15px;
 }
 
 nav {
   width: 100%;
+  background-color: #5c7997;
 }
 
 nav ul {
+  margin: 0;
   display: flex;
   list-style: none;
   justify-content: space-evenly;
+  padding: 15px;
 }
 
 nav ul li a {
   text-decoration: auto;
   color: white;
-  font-size: 30px;
+  font-size: 20px;
   margin: 5px 10px;
 }
 
@@ -58,9 +69,7 @@ nav ul li a:hover {
 }
 
 #search-div {
-  display: flex;
-  align-items: center;
-  margin: 0 10%;
+  display: contents;
 }
 
 .search-input {
@@ -86,13 +95,13 @@ nav ul li a:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  width: 40%;
+  margin-left: 20px;
 }
 
 .logo {
-  width: 7%;
+  width: 70px;
   height: auto;
-  margin-left: 1rem;
   border-radius: 10px;
 }
 
@@ -108,17 +117,17 @@ nav ul li a:hover {
 
 .nav-links {
   display: flex;
-  justify-content: center;
-  gap: 2rem;
   list-style: none;
+  gap: 1.5rem;
   padding: 0;
-  margin: 1rem 0 0;
+  margin: 0;
 }
 
 .nav-links a {
   color: white;
-  text-decoration: none;
+  font-size: 1.2rem;
   font-weight: bold;
+  text-decoration: none;
 }
 
 main {
@@ -250,4 +259,56 @@ button {
 }
 .movie-card button {
   margin-top: 0.5rem;
+}
+
+footer {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  header.header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #search-div {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .search-input {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .search-button {
+    width: auto;
+  }
+
+  .movie-card.expanded {
+    flex-direction: column;
+    align-items: center;
+    grid-column: span 1;
+  }
+
+  .movie-card.expanded img {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .movie-card .movie-details {
+    width: 100%;
+    text-align: center;
+  }
+
+  .movie-card .movie-details button {
+    width: 80%;
+    margin: 10px auto;
+    display: block;
+  }
 }
